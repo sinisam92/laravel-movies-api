@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Movie;
 use Illuminate\Http\Request;
 
-class MovieController extends Controller
+class MoviesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,19 +31,19 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Movie $movie)
     {
-        //
+        return $movie;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Movie $movie)
@@ -54,11 +54,12 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return $movie;
     }
 }
