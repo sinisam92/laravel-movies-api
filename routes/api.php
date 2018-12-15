@@ -13,16 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->group(function() {
-
-    Route::get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-    });
-
 });
 
-// Route::resource('movies', MoviesController::class)->except(['create', 'edit']);
-
-Route::get('movies', 'MoviesController@index');
-
-
+Route::resource('movies', MoviesController::class)->except(['create', 'edit']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Movie;
+use App\Http\Requests\MovieRequest;
 use Illuminate\Http\Request;
 
 class MoviesController extends Controller
@@ -23,15 +24,22 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
-        //
+        return Movie::create($request->only([
+            'title',
+            'director',
+            'duration',
+            'releaseDate',
+            'imageUrl',
+            'genre',  
+        ]));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function show(Movie $movie)
@@ -43,18 +51,26 @@ class MoviesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(MovieRequest $request, Movie $movie)
     {
-        //
+        $movie->update($request->only([
+            'title',
+            'director',
+            'duration',
+            'releaseDate',
+            'imageUrl', 
+            'genre', 
+        ]));
+        return $movie;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function destroy(Movie $movie)

@@ -8,7 +8,7 @@ $factory->define(App\Movie::class, function (Faker $faker) {
         'director' => $faker->name,
         'imageUrl' => $faker->imageUrl($width = 700, $height = 300, 'abstract', true, 'Faker', true),
         'duration' => $faker->numberBetween($min = 95, $max = 210 ),
-        'releaseDate' => $faker->date,
+        'releaseDate' => $faker->date($format = 'Y-m-d H:i:s', $max = 'now'),
         'genre' => $faker->word,
 
     ];
