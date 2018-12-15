@@ -13,9 +13,13 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Movie::paginate(5);
+        $search = $request->query('title');
+        if ($search) {
+            return Movie::search($search);
+        }
+            return Movie::all();
     }
 
     /**
