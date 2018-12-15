@@ -16,7 +16,9 @@ class Movie extends Model
     ];
     public static function search($searchTerm)
     {
-        $movies = Movie::where('title','like','%' . $searchTerm . '%')->get();
+        $movies = Movie::where('title','like','%' . $searchTerm . '%')
+            ->take($take)
+            ->get();
         return $movies;
     }
 }
