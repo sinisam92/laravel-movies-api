@@ -14,9 +14,11 @@ class Movie extends Model
         'releaseDate',
         'genre',
     ];
-    public static function search($searchTerm)
+    public static function search($searchTerm, $take)
     {
-        $movies = Movie::where('title','like','%' . $searchTerm . '%')->get();
+        $movies = Movie::where('title','like','%' . $searchTerm . '%')
+            ->take($take)
+            ->get();
         return $movies;
     }
 }
