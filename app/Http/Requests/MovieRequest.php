@@ -23,13 +23,17 @@ class MovieRequest extends FormRequest
      */
     public function rules()
     {
+        
+        $movieId = $this->method() === "PUT"
+            ? $this->route()->parameters['movie']->id
+            : null;
 
         return [
-            'title' => 'required|unique:movies',
+            'title' => 'required|unique:movies,title' .  ($movieId ? ",$movieId" : ''),         
             'director' => 'required',
-            'duration' => 'required|min:1|max:500',
-            'releaseDate' => 'required|unique:movies',
-            'imageUrl' => 'required|url'
+            'releaseDate'=> 'required|date_format:Y-m-d|unique:movies,releaseDate' .  ($movieId ? ",$movieId" : ''),
+            'duration' => 'numeric|between:1,500',
+            'imageUrl' => 'url'
         ];
     }
 }
