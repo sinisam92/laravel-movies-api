@@ -15,11 +15,8 @@ class MoviesController extends Controller
      */
     public function index(Request $request)
     {
-<<<<<<< HEAD
+
         $search = $request->query('title');
-=======
-         $search = $request->query('title');
->>>>>>> ce1ff85b688c77e3e2477294632bb47986881e62
         $take = $request->query('take');
         $skip = $request->query('skip');
 
