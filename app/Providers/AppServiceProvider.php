@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    //nista se ne menja u ovom fajlu... ovo su neka podesavanja za moju bazu...
     public function boot()
     {
         Schema::defaultStringLength(191);
