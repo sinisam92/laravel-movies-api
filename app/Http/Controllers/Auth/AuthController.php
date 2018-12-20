@@ -48,7 +48,7 @@ class AuthController extends Controller
 		// 		'expires_in' => auth()->factory()->getTTL() * 60,
 		// 		'user' => auth()->user()
 		// ]);
-		return self::login($request);
+		// return self::login($request);
 	}
 
 
